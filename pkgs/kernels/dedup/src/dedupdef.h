@@ -207,9 +207,6 @@ typedef struct {
   int preloading;
   int nthreads;
   int verbose;
-  int n2;
-  int n3;
-  int n4;
 } config_t;
 
 #define COMPRESS_GZIP 0

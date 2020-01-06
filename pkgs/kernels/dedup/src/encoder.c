@@ -1369,9 +1369,8 @@ void Encode(config_t * _conf) {
   int i;
 
   //queue allocation & initialization
-  const int dynamicNumberOfThreads = conf->n2 + conf->n3+ conf->n3
-  const int nqueues = (conf->dynamicNumberOfThreads / MAX_THREADS_PER_QUEUE) +
-                      ((conf->dynamicNumberOfThreads % MAX_THREADS_PER_QUEUE != 0) ? 1 : 0);
+  const int nqueues = (conf->nthreads / MAX_THREADS_PER_QUEUE) +
+                      ((conf->nthreads % MAX_THREADS_PER_QUEUE != 0) ? 1 : 0);
   deduplicate_que = malloc(sizeof(queue_t) * nqueues);
   refine_que = malloc(sizeof(queue_t) * nqueues);
   reorder_que = malloc(sizeof(queue_t) * nqueues);
@@ -1382,12 +1381,12 @@ void Encode(config_t * _conf) {
   }
   int threads_per_queue;
   for(i=0; i<nqueues; i++) {
-    if (i < nqueues -1 || dynamicNumberOfThreads %MAX_THREADS_PER_QUEUE == 0) {
+    if (i < nqueues -1 || conf->nthreads %MAX_THREADS_PER_QUEUE == 0) {
       //all but last queue
       threads_per_queue = MAX_THREADS_PER_QUEUE;
     } else {
       //remaining threads work on last queue
-      threads_per_queue = dynamicNumberOfThreads %MAX_THREADS_PER_QUEUE;
+      threads_per_queue = conf->nthreads %MAX_THREADS_PER_QUEUE;
     }
 
     //call queue_init with threads_per_queue
@@ -1480,20 +1479,20 @@ void Encode(config_t * _conf) {
   pthread_create(&threads_process, NULL, Fragment, &data_process_args);
 
   //Create 3 thread pools for the intermediate pipeline stages
-  struct thread_args anchor_thread_args[conf->n2];
-  for (i = 0; i < conf->n2; i ++) {
+  struct thread_args anchor_thread_args[conf->nthreads];
+  for (i = 0; i < conf->nthreads; i ++) {
      anchor_thread_args[i].tid = i;
      pthread_create(&threads_anchor[i], NULL, FragmentRefine, &anchor_thread_args[i]);
   }
 
-  struct thread_args chunk_thread_args[conf->n3];
-  for (i = 0; i < conf->n3; i ++) {
+  struct thread_args chunk_thread_args[conf->nthreads];
+  for (i = 0; i < conf->nthreads; i ++) {
     chunk_thread_args[i].tid = i;
     pthread_create(&threads_chunk[i], NULL, Deduplicate, &chunk_thread_args[i]);
   }
 
-  struct thread_args compress_thread_args[conf->n4];
-  for (i = 0; i < conf->n4; i ++) {
+  struct thread_args compress_thread_args[conf->nthreads];
+  for (i = 0; i < conf->nthreads; i ++) {
     compress_thread_args[i].tid = i;
     pthread_create(&threads_compress[i], NULL, Compress, &compress_thread_args[i]);
   }
@@ -1507,17 +1506,17 @@ void Encode(config_t * _conf) {
   /*** parallel phase ***/
 
   //Return values of threads
-  stats_t *threads_anchor_rv[conf->n2];
-  stats_t *threads_chunk_rv[conf->n3];
-  stats_t *threads_compress_rv[conf->n4];
+  stats_t *threads_anchor_rv[conf->nthreads];
+  stats_t *threads_chunk_rv[conf->nthreads];
+  stats_t *threads_compress_rv[conf->nthreads];
 
   //join all threads 
   pthread_join(threads_process, NULL);
-  for (i = 0; i < conf->n2; i ++)
+  for (i = 0; i < conf->nthreads; i ++)
     pthread_join(threads_anchor[i], (void **)&threads_anchor_rv[i]);
-  for (i = 0; i < conf->n3; i ++)
+  for (i = 0; i < conf->nthreads; i ++)
     pthread_join(threads_chunk[i], (void **)&threads_chunk_rv[i]);
-  for (i = 0; i < conf->n4; i ++)
+  for (i = 0; i < conf->nthreads; i ++)
     pthread_join(threads_compress[i], (void **)&threads_compress_rv[i]);
   pthread_join(threads_send, NULL);
 
@@ -1539,15 +1538,15 @@ void Encode(config_t * _conf) {
 
 #ifdef ENABLE_STATISTICS
   //Merge everything into global `stats' structure
-  for(i=0; i<conf->n2; i++) {
+  for(i=0; i<conf->nthreads; i++) {
     merge_stats(&stats, threads_anchor_rv[i]);
     free(threads_anchor_rv[i]);
   }
-  for(i=0; i<conf->n3; i++) {
+  for(i=0; i<conf->nthreads; i++) {
     merge_stats(&stats, threads_chunk_rv[i]);
     free(threads_chunk_rv[i]);
   }
-  for(i=0; i<conf->n4; i++) {
+  for(i=0; i<conf->nthreads; i++) {
     merge_stats(&stats, threads_compress_rv[i]);
     free(threads_compress_rv[i]);
   }
