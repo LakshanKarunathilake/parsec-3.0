@@ -8,7 +8,6 @@ include_directories(openssl)
 
 add_executable(src
         openssl/md32_common.h
-        openssl/sha.h
         openssl/sha_locl.h
         binheap.c
         binheap.h

@@ -6,8 +6,6 @@ CMakeFiles/src.dir/binheap.c.obj: ../binheap.h
 CMakeFiles/src.dir/binheap.c.obj: ../config.h
 CMakeFiles/src.dir/binheap.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/binheap.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/binheap.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/binheap.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/binheap.c.obj: ../sha.h
 
 CMakeFiles/src.dir/decoder.c.obj: ../config.h
@@ -17,8 +15,6 @@ CMakeFiles/src.dir/decoder.c.obj: ../decoder.h
 CMakeFiles/src.dir/decoder.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/decoder.c.obj: ../hashtable.h
 CMakeFiles/src.dir/decoder.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/decoder.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/decoder.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/decoder.c.obj: ../sha.h
 CMakeFiles/src.dir/decoder.c.obj: ../util.h
 
@@ -29,8 +25,6 @@ CMakeFiles/src.dir/dedup.c.obj: ../dedup.c
 CMakeFiles/src.dir/dedup.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/dedup.c.obj: ../encoder.h
 CMakeFiles/src.dir/dedup.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/dedup.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/dedup.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/dedup.c.obj: ../queue.h
 CMakeFiles/src.dir/dedup.c.obj: ../sha.h
 CMakeFiles/src.dir/dedup.c.obj: ../util.h
@@ -43,8 +37,6 @@ CMakeFiles/src.dir/encoder.c.obj: ../encoder.c
 CMakeFiles/src.dir/encoder.c.obj: ../encoder.h
 CMakeFiles/src.dir/encoder.c.obj: ../hashtable.h
 CMakeFiles/src.dir/encoder.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/encoder.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/encoder.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/encoder.c.obj: ../queue.h
 CMakeFiles/src.dir/encoder.c.obj: ../rabin.h
 CMakeFiles/src.dir/encoder.c.obj: ../sha.h
@@ -62,8 +54,6 @@ CMakeFiles/src.dir/mbuffer.c.obj: ../mbuffer.h
 CMakeFiles/src.dir/queue.c.obj: ../config.h
 CMakeFiles/src.dir/queue.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/queue.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/queue.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/queue.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/queue.c.obj: ../queue.c
 CMakeFiles/src.dir/queue.c.obj: ../queue.h
 CMakeFiles/src.dir/queue.c.obj: ../sha.h
@@ -72,8 +62,6 @@ CMakeFiles/src.dir/queue.c.obj: ../util.h
 CMakeFiles/src.dir/rabin.c.obj: ../config.h
 CMakeFiles/src.dir/rabin.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/rabin.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/rabin.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/rabin.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/rabin.c.obj: ../rabin.c
 CMakeFiles/src.dir/rabin.c.obj: ../rabin.h
 CMakeFiles/src.dir/rabin.c.obj: ../sha.h
@@ -86,8 +74,6 @@ CMakeFiles/src.dir/tree.c.obj: ../binheap.h
 CMakeFiles/src.dir/tree.c.obj: ../config.h
 CMakeFiles/src.dir/tree.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/tree.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/tree.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/tree.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/tree.c.obj: ../sha.h
 CMakeFiles/src.dir/tree.c.obj: ../tree.c
 CMakeFiles/src.dir/tree.c.obj: ../tree.h
@@ -96,8 +82,6 @@ CMakeFiles/src.dir/tree.c.obj: ../util.h
 CMakeFiles/src.dir/util.c.obj: ../config.h
 CMakeFiles/src.dir/util.c.obj: ../dedupdef.h
 CMakeFiles/src.dir/util.c.obj: ../mbuffer.h
-CMakeFiles/src.dir/util.c.obj: ../openssl/md32_common.h
-CMakeFiles/src.dir/util.c.obj: ../openssl/sha_locl.h
 CMakeFiles/src.dir/util.c.obj: ../sha.h
 CMakeFiles/src.dir/util.c.obj: ../util.c
 CMakeFiles/src.dir/util.c.obj: ../util.h

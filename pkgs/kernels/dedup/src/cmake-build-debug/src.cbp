@@ -126,9 +126,6 @@
 		<Unit filename="I:/Research/parsec-benchmark/pkgs/kernels/dedup/src/openssl/md32_common.h">
 			<Option target="src"/>
 		</Unit>
-		<Unit filename="I:/Research/parsec-benchmark/pkgs/kernels/dedup/src/openssl/sha.h">
-			<Option target="src"/>
-		</Unit>
 		<Unit filename="I:/Research/parsec-benchmark/pkgs/kernels/dedup/src/openssl/sha_locl.h">
 			<Option target="src"/>
 		</Unit>

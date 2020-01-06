@@ -117,6 +117,15 @@ int main(int argc, char** argv) {
     case 't':
       conf->nthreads = atoi(optarg);
       break;
+    case 'x':
+      conf->n2 = atoi(optarg);
+      break;
+    case 'y':
+      conf->n3 = atoi(optarg);
+      break;
+    case 'z':
+      conf->n4 = atoi(optarg);
+      break;
     case 'v':
       conf->verbose = TRUE;
       break;
@@ -156,6 +165,9 @@ int main(int argc, char** argv) {
 #endif
 
   if (compress) {
+      printf("=======================================================");
+      printf("%s",conf);
+      printf("=======================================================");
     Encode(conf);
   } else {
     Decode(conf);
